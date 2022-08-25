@@ -1,0 +1,6 @@
+const tip5Btn = document.getElementById("tip5Btn")
+const tip10Btn = document.getElementById("tip10Btn")
+const tip15Btn = document.getElementById("tip15Btn")
+const tip20Btn = document.getElementById("tip20Btn")
+const tip25Btn = document.getElementById("tip25Btn")
+const customTipBtn = document.getElementById("tipCustomBtn")
