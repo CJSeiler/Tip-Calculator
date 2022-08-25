@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  
+  <title>Tip calculator app</title>
+</head>
+<body>
+  <img src="images/logo.svg" alt="splitter logo">
+  <main class="wrapper">
+    <div class="calculator">
+      <label for="bill">Bill</label>
+      <input class="calculator-bill-input" type="text" id="bill" name="bill" placedholder="0">
+
+      <p>Select Tip %</p>
+
+      <div class="tip-btn-container">
+        <button class="calculator-tip-btn">5%</button>
+        <button class="calculator-tip-btn">10%</button>
+        <button class="calculator-tip-btn">15%</button>
+        <button class="calculator-tip-btn">20%</button>
+        <button class="calculator-tip-btn">25%</button>
+        <input class="calculator-custom-tip" type="text" name="tip" placeholder="Custom">
+      </div>
+      
+      <p>Number of People</p>
+      <input class="caclulator-people-input" type="text" name="people" placeholder="1">
+    </div>
+
+    <div class="calculator-display">
+      <div class="calculator-display-tip">
+        <p>Tip Amount <br> <span class="small-text">/ person</span></p>
+        <p>$0.00</p>
+      </div>
+
+      <div class="calculator-display-total">
+        <p>Total <br> <span class="small-text">/ person</span></p>
+        <p>$0.00</p>
+      </div>
+      <button class="calculator-display-reset-btn">RESET</button>
+    </div>
+  </main>
+</body>
+</html>
