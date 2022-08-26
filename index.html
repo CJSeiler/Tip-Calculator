@@ -18,7 +18,7 @@
     <section class="calculator">
       <div class="calculator-bill">
         <label for="bill">Bill</label>
-        <input class="calculator-bill-input" type="text" id="bill" name="bill" placedholder="0.00">
+        <input class="calculator-bill-input" type="number" id="bill" name="bill" step="0.01">
       </div>
 
       <div class="calculator-tip">
@@ -29,13 +29,15 @@
           <button id="tip15Btn" class="calculator-tip-btn">15%</button>
           <button id="tip20Btn" class="calculator-tip-btn">20%</button>
           <button id="tip25Btn" class="calculator-tip-btn">25%</button>
-          <input id="tipCustomBtn" class="calculator-custom-tip" type="text" name="tip" placeholder="Custom">
+          <input id="tipCustomBtn" class="calculator-custom-tip" type="number" name="tip" maxlength="2" placeholder="Custom">
         </div>
       </div>
 
       <div class="calculator-people">
         <label for="people">Number of People</label>
-        <input class="calculator-people-input" id="people" type="text" name="people" placeholder="1">
+        <span class="people-input-validity">Can't be zero</span>
+        <input class="calculator-people-input" id="people" type="number" name="people" placeholder="1" min="0">
+
       </div>
     </section>
 
@@ -52,5 +54,6 @@
       <button class="calculator-display-reset-btn">RESET</button>
     </section>
   </main>
+  <script src="index.js"></script>
 </body>
 </html>

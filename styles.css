@@ -58,6 +58,19 @@ input {
     margin-top: 10px;
 }
 
+input:focus {
+    border: 2px solid var(--light-cyan);
+    outline: none;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0; 
+}
+
 .logo {
     height: 75px;
     width: 75px;
@@ -91,6 +104,10 @@ input {
     background-image: url("./images/icon-dollar.svg");
 }
 
+.calculator-bill-input:invalid {
+    border: 3px solid red;
+}
+
 .calculator-bill-input,
 .calculator-people-input {
     background-repeat: no-repeat;
@@ -103,9 +120,12 @@ input {
 }
 
 .calculator-display-reset-btn:hover,
-.calculator-tip-btn:hover {
+.calculator-tip-btn:hover,
+.calculator-display-reset-btn:focus,
+.calculator-tip-btn:focus {
     background-color: var(--light-cyan);
     cursor: pointer;
+    outline: none;
 }
 
 .calculator-tip-btn-container {
@@ -127,10 +147,29 @@ input {
     width: 100%;
     font: var(--font);
     text-align: center;
+    margin: 0;
+}
+
+.calculator-custom-tip:invalid {
+    border: 3px solid red;
+}
+
+.calculator-people {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 
 .calculator-people-input {
     background-image: url("./images/icon-person.svg");
+    width: 100%;
+}
+
+.people-input-validity {
+    display: inline;
+    color: red;
+    font-size: 0.7rem;
+    word-spacing: 5px;
 }
 
 .calculator-display {
@@ -156,7 +195,7 @@ input {
     color:hsl(183, 100%, 15%);
     font-family: 'Space Mono', monospace; 
     font-size: .9rem;
-    background-color: hsl(172, 67%, 45%);
+    background-color: var(--strong-cyan);
 }
 
 .calculator-display-tip {
