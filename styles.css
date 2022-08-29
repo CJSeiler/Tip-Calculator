@@ -59,8 +59,11 @@ input {
 }
 
 input:focus {
-    border: 2px solid var(--light-cyan);
-    outline: none;
+    outline: 2px solid var(--light-cyan);
+}
+
+input.calculator-tip-btn {
+    background-color: var(--lighter-cyan-gray);
 }
 
 input[type=number]::-webkit-inner-spin-button, 
@@ -143,14 +146,19 @@ input[type=number]::-webkit-outer-spin-button {
     border-radius: 5px;
 }
 
-.calculator-custom-tip {
+.custom-tip {
     width: 100%;
     font: var(--font);
     text-align: center;
     margin: 0;
 }
 
-.calculator-custom-tip:invalid {
+.custom-tip:focus {
+    background-color: var(--lighter-cyan-gray);
+    outline: 2px solid var(--light-cyan);
+}
+
+.custom-tip:invalid {
     border: 3px solid red;
 }
 
