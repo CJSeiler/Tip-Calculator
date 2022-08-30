@@ -18,25 +18,25 @@
     <section class="calculator">
       <div class="calculator-bill">
         <label for="bill">Bill</label>
-        <input class="calculator-bill-input" type="number" id="bill" name="bill" step="0.01">
+        <input class="calculator-bill-input" type="number" id="bill" name="bill" step="0.01" placeholder="0">
       </div>
 
       <div class="calculator-tip">
         <p>Select Tip %</p>
         <div class="calculator-tip-btn-container">
-          <button id="tipBtn" class="calculator-tip-btn">5%</button>
-          <button id="tipBtn" class="calculator-tip-btn">10%</button>
-          <button id="tipBtn" class="calculator-tip-btn">15%</button>
-          <button id="tipBtn" class="calculator-tip-btn">20%</button>
-          <button id="tipBtn" class="calculator-tip-btn">25%</button>
-          <input id="tipBtn" class="calculator-tip-btn custom-tip" type="number" name="tip" placeholder="Custom">
+          <button class="calculator-tip-btn">5%</button>
+          <button class="calculator-tip-btn selected">10%</button>
+          <button class="calculator-tip-btn">15%</button>
+          <button class="calculator-tip-btn">20%</button>
+          <button class="calculator-tip-btn">25%</button>
+          <input id="customTipBtn" class="calculator-tip-btn custom-tip" type="number" name="tip" placeholder="Custom">
         </div>
       </div>
 
       <div class="calculator-people">
         <label for="people">Number of People</label>
-        <span class="people-input-validity">Can't be zero</span>
-        <input class="calculator-people-input" id="people" type="number" name="people" placeholder="1" min="0">
+        <span id="inputValidity" class="people-input-validity hide">Can't be zero</span>
+        <input class="calculator-people-input" id="people" type="number" name="people"  placeholder="1">
 
       </div>
     </section>
@@ -44,14 +44,14 @@
     <section class="calculator-display">
       <div class="calculator-display-tip">
         <p>Tip Amount <br> <span class="small-text">/ person</span></p>
-        <p class="amount-text" id="tipAmount">$4.27</p>
+        <p class="amount-text" id="tipAmount">$0.00</p>
       </div>
 
       <div class="calculator-display-total">
         <p>Total <br> <span class="small-text">/ person</span></p>
-        <p class="amount-text" id="totalAmount">$32.79</p>
+        <p class="amount-text" id="totalAmount">$0.00</p>
       </div>
-      <button class="calculator-display-reset-btn">RESET</button>
+      <button id="resetBtn" class="calculator-display-reset-btn">RESET</button>
     </section>
   </main>
   <script src="index.js"></script>

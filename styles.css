@@ -46,6 +46,11 @@ p {
     font-size: .75rem;
 }
 
+label,
+.calculator-tip > p {
+    opacity: 0.5;
+}
+
 input {
     background-color: var(--lighter-cyan-gray);
     border-radius: 5px;
@@ -84,11 +89,11 @@ input[type=number]::-webkit-outer-spin-button {
     width: 600px;
     display: flex;
     justify-content: space-around;
-    padding: 30px;
-    border: 2px solid black;
-    border-radius: 10px;
+    padding: 20px;
+    border-radius: 25px;
     background-color: var(--white);
     margin-top: 4em;
+    box-shadow: 0 0 15px 2px rgba(0, 0, 0, 0.1);
 }
 
 .calculator {
@@ -97,11 +102,6 @@ input[type=number]::-webkit-outer-spin-button {
     justify-content: space-between;
 }
 
-.calulator-tip,
-.calculator-bill,
-.calulator-people {
-    width: 100%;
-}
 
 .calculator-bill-input {
     background-image: url("./images/icon-dollar.svg");
@@ -111,6 +111,10 @@ input[type=number]::-webkit-outer-spin-button {
     border: 3px solid red;
 }
 
+.calculator-tip > p {
+    margin-bottom: 0.75em;
+}
+
 .calculator-bill-input,
 .calculator-people-input {
     background-repeat: no-repeat;
@@ -118,7 +122,8 @@ input[type=number]::-webkit-outer-spin-button {
     background-size: 8px;
 }
 
-.calculator-tip-btn:hover {
+.calculator-tip-btn:hover, 
+.calculator-tip-btn:focus {
     color: #000;
 }
 
@@ -138,19 +143,20 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .calculator-tip-btn {
-    padding: .5em .75em;
+    padding: .325em .75em;
     background-color: var(--dark-cyan);
     color: var(--white);
     font: var(--font);
+    font-size: 1.25em;
     border: none;
     border-radius: 5px;
 }
 
 .custom-tip {
     width: 100%;
-    font: var(--font);
     text-align: center;
     margin: 0;
+    color: var(--dark-cyan);
 }
 
 .custom-tip:focus {
@@ -173,11 +179,21 @@ input[type=number]::-webkit-outer-spin-button {
     width: 100%;
 }
 
+.calculator-people-input:invalid {
+    border: 2px solid red;
+}
+
 .people-input-validity {
     display: inline;
     color: red;
     font-size: 0.7rem;
     word-spacing: 5px;
+}
+
+.calulator-tip,
+.calculator-bill,
+.calulator-people {
+    width: 100%;
 }
 
 .calculator-display {
@@ -216,4 +232,13 @@ input[type=number]::-webkit-outer-spin-button {
     justify-content: space-between;
     align-items: center;
     font-size: .7rem;
+}
+
+.hide {
+    display: none;
+}
+
+.calculator-tip-btn.selected {
+    background-color: var(--light-cyan);
+    color:#000;
 }
