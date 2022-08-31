@@ -32,6 +32,7 @@ customTipBtn.addEventListener("keyup", (e)=> {
 peopleInput.addEventListener("keyup", (e)=> {
     let {value} = e.target
     toFixedDecimalPlace(value, e.target, 0) // prevents user from entering decimal number
+    toFixedLength(value, e.target, 3)
 
     if(value < 1) inputValidity.classList.remove("hide")
     if(value > 0 || value === "") inputValidity.classList.add("hide") 
@@ -86,10 +87,11 @@ function calculateTipAmount() {
     const tipPercentage = calculateTipPercentage()
     const numOfPeople = Number(peopleInput.value)
     const bill = Number(billInput.value)
-    const tipAmount = tipPercentage * bill / numOfPeople
+    const tipTotal = tipPercentage * bill
+    const tipAmount = tipTotal / numOfPeople
 
     tipAmountText.textContent = `$${tipAmount.toFixed(2)}`
-    return Number(tipAmount.toFixed(2))
+    return Number(tipTotal)
 }
 
 function calculateTotal() {
@@ -101,8 +103,8 @@ function calculateTotal() {
         totalAmountText.textContent = "$0.00"
         return
     }
-    const tipAmount = calculateTipAmount()
-    const billTotal = (bill + tipAmount) / numOfPeople
+    const tipTotal = calculateTipAmount()
+    const billTotal = (bill + tipTotal) / numOfPeople
 
     totalAmountText.textContent = `$${billTotal.toFixed(2)}`
 }
