@@ -21,11 +21,12 @@ tipButtonsArray.forEach(button => {
 })
 
 billInput.addEventListener("keyup", (e) => {
+    toFixedLength(e.target.value, e.target, 5)
     toFixedDecimalPlace(e.target.value, e.target, 2)
 })
 
 customTipBtn.addEventListener("keyup", (e)=> {
-    toFixedLength(e.target.value, e.target)
+    toFixedLength(e.target.value, e.target, 2)
 })
 
 peopleInput.addEventListener("keyup", (e)=> {
@@ -51,10 +52,10 @@ function toFixedDecimalPlace(value, target, decimalPlace) {
     target.value = fixedValue
 }
 
-// fixes customInput number to 2 places for tip percentage
-function toFixedLength(value, target) {
-    if(!value.length > 2) return
-    target.value = value.substring(0,2)
+// fixes customInput number to given length for tip percentage
+function toFixedLength(value, target, length) {
+    if(!value.length > length) return
+    target.value = value.substring(0,length)
 }
 
 function selectTipPercentage(e) {
