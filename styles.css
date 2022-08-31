@@ -302,6 +302,10 @@ input[type=number]::-webkit-outer-spin-button {
         text-align: right;
     }
 
+    .people-input-validity {
+        margin-left: auto;
+    }
+
     .display-reset-btn {
         margin-top: 1em;
     }
