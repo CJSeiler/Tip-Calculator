@@ -6,45 +6,35 @@ const inputValidity = document.getElementById("inputValidity")
 const tipAmountText = document.getElementById("tipAmount")
 const totalAmountText = document.getElementById("totalAmount")
 const resetBtn = document.getElementById("resetBtn")
+const calculatorForm = document.getElementById("calculator")
+
+let selectedTip = tipButtonsArray.find(button => button.classList.contains("selected"))
+
+calculator.addEventListener("keyup", calculateTotal)
+calculator.addEventListener("click", calculateTotal)
 
 tipButtonsArray.forEach(button => {
     button.addEventListener("click", (e) => {
         e.preventDefault()
         selectTipPercentage(e)
-        calculateTotal()
     })
 })
 
-function selectTipPercentage(e) {
-    tipButtonsArray.forEach(button => {
-        if(button.classList.contains("selected")) {
-            button.classList.remove("selected")
-        } else return
-    })
-    e.target.classList.add("selected")
-    
-}
-
 billInput.addEventListener("keyup", (e) => {
-    e.preventDefault()
     toFixedDecimalPlace(e.target.value, e.target, 2)
-    calculateTotal()
 })
 
 customTipBtn.addEventListener("keyup", (e)=> {
-    e.preventDefault()
     toFixedLength(e.target.value, e.target)
-    calculateTotal()
 })
 
 peopleInput.addEventListener("keyup", (e)=> {
-    e.preventDefault()
     let {value} = e.target
-    toFixedDecimalPlace(value, e.target, 0)
+    toFixedDecimalPlace(value, e.target, 0) // prevents user from entering decimal number
+
     if(value < 1) inputValidity.classList.remove("hide")
     if(value > 0 || value === "") inputValidity.classList.add("hide") 
-    if(e.key === "-") e.target.value = value.substring(0, value.length)
-    calculateTotal()
+    if(e.key === "-") e.target.value = "" // resets input if "-" is pressed
 })
 
 resetBtn.addEventListener("click", resetCalculator)
@@ -52,35 +42,46 @@ resetBtn.addEventListener("click", resetCalculator)
 // fixes number as type string to given decimal place e.g. 1, 2, 3, etc.
 function toFixedDecimalPlace(value, target, decimalPlace) {
     if(!value.includes(".")) return value
-
-    let decimalIndex = value.indexOf(".")
-    let number = value.substring(0, decimalIndex)
-    let decimalNumber = value.substring(decimalIndex, value.length)
-    let fixedDecimalNumber = decimalNumber.substring(0, decimalPlace + 1)
-    let fixedValue = number + fixedDecimalNumber
+    
+    const decimalIndex = value.indexOf(".")
+    const number = value.substring(0, decimalIndex)
+    const decimalNumber = value.substring(decimalIndex, value.length)
+    const fixedDecimalNumber = decimalNumber.substring(0, decimalPlace + 1)
+    const fixedValue = number + fixedDecimalNumber
     target.value = fixedValue
 }
 
+// fixes customInput number to 2 places for tip percentage
 function toFixedLength(value, target) {
     if(!value.length > 2) return
     target.value = value.substring(0,2)
 }
 
-function calculateTipPercentage() {
-    const selectedTip = tipButtonsArray.find(button => button.classList.contains("selected"))
-    let selectedTipNumber
+function selectTipPercentage(e) {
+    tipButtonsArray.forEach(button => {
+        if(button.classList.contains("selected")) {
+            button.classList.remove("selected")
+        } else return
+    })
+    
+    selectedTip = e.target
+    e.target.classList.add("selected")
+    
+}
 
+function calculateTipPercentage() {
+    // if selecting custom tip, use input value. if using tip button, use text content
     if(selectedTip === customTipBtn) {
-        return selectedTipNumber = Number(selectedTip.value)
+        return Number(selectedTip.value) / 100
     } else {
         const percentIndex = selectedTip.textContent.indexOf("%")
-        return selectedTipNumber = Number(selectedTip.textContent.substring(0, percentIndex))
+        return Number(selectedTip.textContent.substring(0, percentIndex)) / 100
     }
 
 }
 
 function calculateTipAmount() {
-    const tipPercentage = calculateTipPercentage() / 100
+    const tipPercentage = calculateTipPercentage()
     const numOfPeople = Number(peopleInput.value)
     const bill = Number(billInput.value)
     const tipAmount = tipPercentage * bill / numOfPeople
@@ -92,6 +93,7 @@ function calculateTipAmount() {
 function calculateTotal() {
     const bill = Number(billInput.value)
     const numOfPeople = Number(peopleInput.value)
+    // doesn't allow less than 1 in peopleInput
     if(numOfPeople < 1) {
         tipAmountText.textContent = "$0.00"
         totalAmountText.textContent = "$0.00"
@@ -115,3 +117,7 @@ function resetCalculator() {
 
     billInput.focus()
 }
+
+// function resetInput() {
+//     if(e.key === "-") e.target.value = value.substring(0, value.length)
+// }
